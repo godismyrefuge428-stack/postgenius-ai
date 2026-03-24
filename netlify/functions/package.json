@@ -1,0 +1,8 @@
+{
+  "name": "postgenius-functions",
+  "version": "1.0.0",
+  "dependencies": {
+    "stripe": "^14.25.0",
+    "openai": "^3.3.0"
+  }
+}
