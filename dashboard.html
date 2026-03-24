@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - PostGenius</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%); 
+            color: #e0e0e0; 
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .login-box {
+            background: linear-gradient(135deg, #1a2332 0%, #243447 100%);
+            padding: 50px;
+            border-radius: 12px;
+            border: 2px solid #4ade80;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 0 30px rgba(74, 222, 128, 0.2);
+        }
+        
+        .login-box h2 {
+            color: #4ade80;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 28px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #b0b0b0;
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            background: #0f1419;
+            border: 1px solid #2d5a3d;
+            color: #e0e0e0;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #4ade80;
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+            color: #000;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .login-button:hover {
+            transform: scale(1.02);
+        }
+        
+        .dashboard {
+            display: none;
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .dashboard.active {
+            display: block;
+        }
+        
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #2d5a3d;
+            padding-bottom: 20px;
+        }
+        
+        .dashboard-header h1 {
+            color: #4ade80;
+            font-size: 32px;
+        }
+        
+        .logout-button {
+            padding: 10px 20px;
+            background: #2d5a3d;
+            color: #4ade80;
+            border: 1px solid #4ade80;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .logout-button:hover {
+            background: #4ade80;
+            color: #000;
+        }
+        
+        .content-generator {
+            background: linear-gradient(135deg, #1a2332 0%, #243447 100%);
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid #2d5a3d;
+            margin-bottom: 30px;
+        }
+        
+        .content-generator h2 {
+            color: #4ade80;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-row.full {
+            grid-template-columns: 1fr;
+        }
+        
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            background: #0f1419;
+            border: 1px solid #2d5a3d;
+            color: #e0e0e0;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: #0f1419;
+            border: 1px solid #2d5a3d;
+            color: #e0e0e0;
+            border-radius: 6px;
+            font-size: 16px;
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .generate-button {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+            color: #000;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .generate-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .generate-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .output-section {
+            background: linear-gradient(135deg, #1a2332 0%, #243447 100%);
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid #2d5a3d;
+            display: none;
+        }
+        
+        .output-section.active {
+            display: block;
+        }
+        
+        .output-section h3 {
+            color: #4ade80;
+            margin-bottom: 20px;
+        }
+        
+        .output-content {
+            background: #0f1419;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .copy-button {
+            padding: 10px 20px;
+            background: #4ade80;
+            color: #000;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .copy-button:hover {
+            background: #22c55e;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            color: #4ade80;
+            font-size: 18px;
+        }
+        
+        .loading.active {
+            display: block;
+        }
+        
+        .error {
+            background: #5a2d2d;
+            border: 1px solid #8b4444;
+            color: #ff6b6b;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .error.active {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .dashboard-header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .login-box {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Section -->
+    <div id="loginSection" class="login-container">
+        <div class="login-box">
+            <h2>🚀 PostGenius</h2>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="your@email.com" required>
+                </div>
+                <button type="submit" class="login-button">Enter Dashboard</button>
+            </form>
+            <p style="text-align: center; margin-top: 20px; color: #808080; font-size: 14px;">
+                Demo: Use any email to test the dashboard
+            </p>
+        </div>
+    </div>
+
+    <!-- Dashboard Section -->
+    <div id="dashboardSection" class="dashboard">
+        <div class="dashboard-header">
+            <div>
+                <h1>Welcome to PostGenius</h1>
+                <p id="userEmail" style="color: #808080; margin-top: 5px;"></p>
+            </div>
+            <button class="logout-button" onclick="handleLogout()">Logout</button>
+        </div>
+
+        <div class="content-generator">
+            <h2>Generate Content</h2>
+            <div id="errorMessage" class="error"></div>
+            
+            <form id="generatorForm" onsubmit="handleGenerate(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="topic">Topic</label>
+                        <input type="text" id="topic" placeholder="e.g., How to start a blog" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contentType">Content Type</label>
+                        <select id="contentType" required>
+                            <option value="">Select a type...</option>
+                            <option value="blog">Blog Post</option>
+                            <option value="email">Email Campaign</option>
+                            <option value="social">Social Media Posts</option>
+                            <option value="ad">Ad Copy</option>
+                            <option value="description">Product Description</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tone">Tone</label>
+                        <select id="tone" required>
+                            <option value="professional">Professional</option>
+                            <option value="casual">Casual</option>
+                            <option value="creative">Creative</option>
+                            <option value="technical">Technical</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label for="additionalInfo">Additional Instructions (Optional)</label>
+                        <textarea id="additionalInfo" placeholder="Any specific details or requirements..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="generate-button" id="generateBtn">Generate Content</button>
+            </form>
+
+            <div class="loading" id="loading">
+                <p>✨ Generating your content...</p>
+            </div>
+        </div>
+
+        <div class="output-section" id="outputSection">
+            <h3>Generated Content</h3>
+            <div class="output-content" id="outputContent"></div>
+            <button class="copy-button" onclick="copyToClipboard()">📋 Copy to Clipboard</button>
+        </div>
+    </div>
+
+    <script>
+        // Simple local storage based login
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            
+            if (email) {
+                localStorage.setItem('postgenius_user', email);
+                localStorage.setItem('postgenius_login_time', new Date().toISOString());
+                showDashboard(email);
+            }
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('postgenius_user');
+            localStorage.removeItem('postgenius_login_time');
+            document.getElementById('loginSection').style.display = 'flex';
+            document.getElementById('dashboardSection').classList.remove('active');
+            document.getElementById('email').value = '';
+        }
+
+        function showDashboard(email) {
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('dashboardSection').classList.add('active');
+            document.getElementById('userEmail').textContent = `Logged in as: ${email}`;
+        }
+
+        function checkLogin() {
+            const user = localStorage.getItem('postgenius_user');
+            if (user) {
+                showDashboard(user);
+            }
+        }
+
+        async function handleGenerate(event) {
+            event.preventDefault();
+            
+            const topic = document.getElementById('topic').value;
+            const contentType = document.getElementById('contentType').value;
+            const tone = document.getElementById('tone').value;
+            const additionalInfo = document.getElementById('additionalInfo').value;
+            const generateBtn = document.getElementById('generateBtn');
+            const loading = document.getElementById('loading');
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Clear previous errors
+            errorMessage.classList.remove('active');
+            errorMessage.textContent = '';
+
+            // Show loading state
+            generateBtn.disabled = true;
+            loading.classList.add('active');
+
+            try {
+                // For now, show a demo response
+                // In production, this would call your backend API
+                const demoContent = generateDemoContent(topic, contentType, tone);
+                
+                // Simulate API delay
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                displayOutput(demoContent);
+            } catch (error) {
+                errorMessage.textContent = 'Error generating content. Please try again.';
+                errorMessage.classList.add('active');
+            } finally {
+                generateBtn.disabled = false;
+                loading.classList.remove('active');
+            }
+        }
+
+        function generateDemoContent(topic, contentType, tone) {
+            const contentExamples = {
+                blog: `# ${topic}\n\nThis is a sample blog post about "${topic}" in a ${tone} tone.\n\nIn a real implementation, this would be generated by OpenAI's GPT-4 model.\n\nKey points:\n- Point 1: Lorem ipsum dolor sit amet\n- Point 2: Consectetur adipiscing elit\n- Point 3: Sed do eiusmod tempor\n\nConclusion: This is where your unique insights would go.`,
+                email: `Subject: ${topic}\n\nDear Subscriber,\n\nI wanted to share something interesting about ${topic}.\n\n${tone === 'professional' ? 'We believe this is an important topic for your business.' : 'Check this out!'}\n\nBest regards,\nYour Team`,
+                social: `Post 1: Check out our latest insights on ${topic}! 🚀\n\nPost 2: Did you know? ${topic} can transform your business.\n\nPost 3: Join us as we explore ${topic} in depth.`,
+                ad: `Headline: Transform Your Business with ${topic}\n\nCopy: Discover how to ${topic} and boost your results.\n\nCTA: Learn More Today →`,
+                description: `${topic}\n\nOur premium solution for ${topic}. Designed with quality and innovation in mind.\n\nFeatures:\n✓ Easy to use\n✓ Highly effective\n✓ Backed by experts`
+            };
+
+            return contentExamples[contentType] || 'Content generated successfully!';
+        }
+
+        function displayOutput(content) {
+            document.getElementById('outputContent').textContent = content;
+            document.getElementById('outputSection').classList.add('active');
+        }
+
+        function copyToClipboard() {
+            const content = document.getElementById('outputContent').textContent;
+            navigator.clipboard.writeText(content).then(() => {
+                alert('Content copied to clipboard!');
+            }).catch(() => {
+                alert('Failed to copy. Please try again.');
+            });
+        }
+
+        // Check if user is already logged in on page load
+        window.addEventListener('load', checkLogin);
+    </script>
+</body>
+</html>
