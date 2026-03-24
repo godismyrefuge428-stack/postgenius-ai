@@ -7,7 +7,8 @@ dotenv.config()
 
 const app = express()
 const PORT = process.env.PORT || 3001
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_demo')
+const stripeKey = process.env.STRIPE_SECRET_KEY || 'sk_test_51TEVOLB3CBhpw6YEXny0EGAeUFrpbJMuWERF6BLAlfZD7vg5sVxPwOjhtzUeFwQJKrdZ4raKrmYSrpnfQwSGeL8F00FHOYgDfh'
+const stripe = new Stripe(stripeKey)
 
 // Middleware
 app.use(cors())
