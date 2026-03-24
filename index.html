@@ -242,7 +242,7 @@
                         <li>Email support</li>
                         <li>Content library</li>
                     </ul>
-                    <button class="cta-button" onclick="alert('Coming soon! Email: support@postgenius-ai.com')">Choose Plan</button>
+                    <button class="cta-button" onclick="openSubscribeModal(this.parentElement.querySelector('h3').textContent.toLowerCase().replace(' ', ''))">Choose Plan</button>
                 </div>
                 <div class="price-card">
                     <h3>Professional</h3>
@@ -255,7 +255,7 @@
                         <li>Priority support</li>
                         <li>Zapier integration</li>
                     </ul>
-                    <button class="cta-button" onclick="alert('Coming soon! Email: support@postgenius-ai.com')">Choose Plan</button>
+                    <button class="cta-button" onclick="openSubscribeModal(this.parentElement.querySelector('h3').textContent.toLowerCase().replace(' ', ''))">Choose Plan</button>
                 </div>
                 <div class="price-card">
                     <h3>Enterprise</h3>
@@ -268,7 +268,7 @@
                         <li>24/7 support</li>
                         <li>API access</li>
                     </ul>
-                    <button class="cta-button" onclick="alert('Coming soon! Email: support@postgenius-ai.com')">Choose Plan</button>
+                    <button class="cta-button" onclick="openSubscribeModal(this.parentElement.querySelector('h3').textContent.toLowerCase().replace(' ', ''))">Choose Plan</button>
                 </div>
             </div>
         </div>
@@ -321,11 +321,11 @@
             messageEl.textContent = 'Processing...';
 
             try {
-                const response = await fetch('/.netlify/functions/create-checkout-session', {
+                const response = await fetch('https://postgenius-ai.onrender.com/api/create-checkout-session', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        priceId: PLAN_PRICES[planType],
+                        plan: planType,
                         email: email
                     })
                 });
