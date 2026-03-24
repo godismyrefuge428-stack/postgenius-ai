@@ -418,16 +418,26 @@
             loading.classList.add('active');
 
             try {
-                // For now, show a demo response
-                // In production, this would call your backend API
-                const demoContent = generateDemoContent(topic, contentType, tone);
-                
-                // Simulate API delay
-                await new Promise(resolve => setTimeout(resolve, 1500));
-                
-                displayOutput(demoContent);
+                // Call the Netlify Function
+                const response = await fetch('/.netlify/functions/generate-content', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        topic,
+                        contentType,
+                        tone,
+                        additionalInfo
+                    })
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.error || 'Failed to generate content');
+                }
+
+                const data = await response.json();
+                displayOutput(data.content);
             } catch (error) {
-                errorMessage.textContent = 'Error generating content. Please try again.';
+                errorMessage.textContent = 'Error: ' + error.message;
                 errorMessage.classList.add('active');
             } finally {
                 generateBtn.disabled = false;
