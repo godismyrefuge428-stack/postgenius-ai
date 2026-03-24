@@ -2,6 +2,9 @@
   "name": "postgenius",
   "version": "1.0.0",
   "scripts": {
-    "start": "npx http-server"
+    "start": "http-server -p $PORT --cors"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
   }
 }
