@@ -1,37 +1,231 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>PostGenius - AI Marketing</title>
-  <style>
-    body { font-family: Arial; background: #0f1419; color: #fff; margin: 0; padding: 20px; }
-    .container { max-width: 1000px; margin: 0 auto; }
-    h1 { color: #4ade80; }
-    button { background: #4ade80; color: #000; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
-    .card { background: #1a2332; padding: 20px; margin: 20px 0; border-radius: 5px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostGenius - AI Marketing Automation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%); 
+            color: #e0e0e0; 
+            line-height: 1.6;
+        }
+        header { 
+            background: linear-gradient(135deg, #1a472a 0%, #0f2818 100%); 
+            padding: 30px 0; 
+            border-bottom: 2px solid #2d5a3d;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header h1 { font-size: 32px; color: #4ade80; margin-bottom: 10px; }
+        nav { display: flex; gap: 30px; }
+        nav a { color: #a0a0a0; text-decoration: none; transition: color 0.3s; }
+        nav a:hover { color: #4ade80; }
+        
+        .hero { 
+            padding: 100px 20px; 
+            text-align: center; 
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.1) 0%, rgba(15, 40, 24, 0.3) 100%);
+        }
+        .hero h2 { font-size: 52px; margin-bottom: 20px; color: #4ade80; font-weight: bold; }
+        .hero p { font-size: 22px; color: #b0b0b0; margin-bottom: 40px; }
+        
+        .cta-button { 
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%); 
+            color: #000; 
+            padding: 16px 45px; 
+            border: none; 
+            border-radius: 8px; 
+            font-size: 18px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-block;
+        }
+        .cta-button:hover { 
+            transform: scale(1.08); 
+            box-shadow: 0 0 20px rgba(74, 222, 128, 0.4);
+        }
+        
+        .features { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 30px; 
+            padding: 80px 20px;
+        }
+        .feature { 
+            background: linear-gradient(135deg, #1a2332 0%, #243447 100%);
+            padding: 40px; 
+            border-radius: 12px; 
+            border-left: 5px solid #4ade80;
+            transition: transform 0.3s;
+        }
+        .feature:hover { transform: translateY(-5px); }
+        .feature h3 { color: #4ade80; margin-bottom: 15px; font-size: 24px; }
+        .feature p { color: #b0b0b0; }
+        
+        .pricing { 
+            padding: 80px 20px; 
+            background: linear-gradient(135deg, #0a0f14 0%, #1a2332 100%);
+        }
+        .pricing h2 { 
+            text-align: center; 
+            font-size: 44px; 
+            margin-bottom: 60px; 
+            color: #4ade80;
+        }
+        .pricing-cards { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px;
+        }
+        .price-card { 
+            background: linear-gradient(135deg, #1a2332 0%, #243447 100%);
+            padding: 40px; 
+            border-radius: 12px; 
+            border: 2px solid #2d5a3d;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .price-card:hover { 
+            transform: scale(1.05);
+            border-color: #4ade80;
+        }
+        .price-card h3 { color: #4ade80; margin-bottom: 20px; font-size: 28px; }
+        .price-card .amount { font-size: 48px; color: #fff; margin: 20px 0; font-weight: bold; }
+        .price-card .period { color: #808080; font-size: 16px; }
+        .price-card ul { text-align: left; margin: 30px 0; list-style: none; }
+        .price-card li { 
+            padding: 12px 0; 
+            border-bottom: 1px solid #2d5a3d;
+            color: #b0b0b0;
+        }
+        .price-card li:before { content: "✓ "; color: #4ade80; font-weight: bold; }
+        .price-card button { margin-top: 20px; width: 100%; }
+        
+        footer { 
+            background: #0a0f14; 
+            padding: 40px 20px; 
+            text-align: center; 
+            border-top: 2px solid #2d5a3d; 
+            color: #808080;
+        }
+        footer p { margin: 10px 0; }
+        
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 36px; }
+            header h1 { font-size: 24px; }
+            nav { flex-direction: column; gap: 10px; }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🚀 PostGenius</h1>
-    <p>AI-Powered Marketing Automation Platform</p>
-    
-    <div class="card">
-      <h2>Generate Social Media Content</h2>
-      <p>Automatically create Instagram, TikTok, Facebook, and Twitter posts</p>
-    </div>
-    
-    <div class="card">
-      <h2>Email Campaigns</h2>
-      <p>Create and schedule email marketing campaigns in seconds</p>
-    </div>
-    
-    <div class="card">
-      <h2>Pricing</h2>
-      <p>Starter: $299/mo | Professional: $699/mo | Enterprise: $1,499/mo</p>
-      <button onclick="alert('Coming Soon!')">Get Started</button>
-    </div>
-    
-    <p style="margin-top: 40px; color: #888;">Contact: support@postgenius-ai.com</p>
-  </div>
+    <header>
+        <div class="container">
+            <h1>🚀 PostGenius</h1>
+            <nav>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>AI-Powered Marketing Automation</h2>
+            <p>Generate social media content, email campaigns, and product descriptions automatically</p>
+            <button class="cta-button" onclick="alert('Sign up coming soon! Email: support@postgenius-ai.com')">Get Started Free</button>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container" style="grid-column: 1/-1; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+            <div class="feature">
+                <h3>📱 Social Media Content</h3>
+                <p>AI generates Instagram, TikTok, Facebook, and Twitter posts automatically. Save hours every week on content creation.</p>
+            </div>
+            <div class="feature">
+                <h3>📧 Email Campaigns</h3>
+                <p>Create and schedule email marketing campaigns in seconds. Engage your audience with personalized messages.</p>
+            </div>
+            <div class="feature">
+                <h3>📝 Product Descriptions</h3>
+                <p>Generate compelling product descriptions for your e-commerce store. Boost conversions with AI-written copy.</p>
+            </div>
+            <div class="feature">
+                <h3>⏰ Smart Scheduling</h3>
+                <p>Schedule content to post at optimal times automatically. Reach your audience when they're most active.</p>
+            </div>
+            <div class="feature">
+                <h3>📊 Analytics Dashboard</h3>
+                <p>Track performance and engagement metrics in real-time. Make data-driven decisions to grow your business.</p>
+            </div>
+            <div class="feature">
+                <h3>🔗 Zapier Integration</h3>
+                <p>Connect to 1000+ apps and automate your entire workflow. Integrate with your favorite tools seamlessly.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2>Simple, Transparent Pricing</h2>
+            <div class="pricing-cards">
+                <div class="price-card">
+                    <h3>Starter</h3>
+                    <div class="amount">$299</div>
+                    <div class="period">per month</div>
+                    <ul>
+                        <li>100 posts/month</li>
+                        <li>10 email campaigns</li>
+                        <li>Basic analytics</li>
+                        <li>Email support</li>
+                        <li>Content library</li>
+                    </ul>
+                    <button class="cta-button">Choose Plan</button>
+                </div>
+                <div class="price-card">
+                    <h3>Professional</h3>
+                    <div class="amount">$699</div>
+                    <div class="period">per month</div>
+                    <ul>
+                        <li>500 posts/month</li>
+                        <li>50 email campaigns</li>
+                        <li>Advanced analytics</li>
+                        <li>Priority support</li>
+                        <li>Zapier integration</li>
+                    </ul>
+                    <button class="cta-button">Choose Plan</button>
+                </div>
+                <div class="price-card">
+                    <h3>Enterprise</h3>
+                    <div class="amount">$1,499</div>
+                    <div class="period">per month</div>
+                    <ul>
+                        <li>Unlimited posts</li>
+                        <li>Unlimited campaigns</li>
+                        <li>Custom analytics</li>
+                        <li>24/7 support</li>
+                        <li>API access</li>
+                    </ul>
+                    <button class="cta-button">Choose Plan</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <p><strong>PostGenius - AI Marketing Automation Platform</strong></p>
+            <p>Email: <strong>support@postgenius-ai.com</strong></p>
+            <p>Domain: <strong>postgenius-ai.com</strong></p>
+            <p style="margin-top: 20px; color: #606060;">&copy; 2026 PostGenius. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
