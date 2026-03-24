@@ -1,132 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PostGenius - AI Marketing Automation</title>
+  <title>PostGenius - AI Marketing</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0f1419; color: #e0e0e0; line-height: 1.6; }
-    header { background: linear-gradient(135deg, #1a472a 0%, #0f2818 100%); padding: 20px 0; border-bottom: 1px solid #2d5a3d; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    header h1 { font-size: 28px; color: #4ade80; }
-    nav { display: flex; gap: 30px; margin-top: 20px; }
-    nav a { color: #a0a0a0; text-decoration: none; transition: color 0.3s; }
-    nav a:hover { color: #4ade80; }
-    .hero { padding: 80px 20px; text-align: center; background: linear-gradient(135deg, rgba(26, 71, 42, 0.3) 0%, rgba(15, 40, 24, 0.3) 100%); }
-    .hero h2 { font-size: 48px; margin-bottom: 20px; color: #4ade80; }
-    .hero p { font-size: 20px; color: #b0b0b0; margin-bottom: 30px; }
-    .cta-button { background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%); color: #000; padding: 15px 40px; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: transform 0.2s; }
-    .cta-button:hover { transform: scale(1.05); }
-    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 60px 20px; }
-    .feature { background: #1a2332; padding: 30px; border-radius: 8px; border-left: 4px solid #4ade80; }
-    .feature h3 { color: #4ade80; margin-bottom: 10px; }
-    .pricing { padding: 60px 20px; background: #0a0f14; }
-    .pricing h2 { text-align: center; font-size: 36px; margin-bottom: 40px; color: #4ade80; }
-    .pricing-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-    .price-card { background: #1a2332; padding: 30px; border-radius: 8px; border: 2px solid #2d5a3d; text-align: center; }
-    .price-card h3 { color: #4ade80; margin-bottom: 15px; font-size: 24px; }
-    .price-card .amount { font-size: 32px; color: #fff; margin: 15px 0; }
-    .price-card ul { text-align: left; margin: 20px 0; }
-    .price-card li { padding: 8px 0; border-bottom: 1px solid #2d5a3d; }
-    footer { background: #0a0f14; padding: 30px 20px; text-align: center; border-top: 1px solid #2d5a3d; color: #808080; }
+    body { font-family: Arial; background: #0f1419; color: #fff; margin: 0; padding: 20px; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    h1 { color: #4ade80; }
+    button { background: #4ade80; color: #000; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+    .card { background: #1a2332; padding: 20px; margin: 20px 0; border-radius: 5px; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1>🚀 PostGenius</h1>
-      <nav>
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#contact">Contact</a>
-      </nav>
+  <div class="container">
+    <h1>🚀 PostGenius</h1>
+    <p>AI-Powered Marketing Automation Platform</p>
+    
+    <div class="card">
+      <h2>Generate Social Media Content</h2>
+      <p>Automatically create Instagram, TikTok, Facebook, and Twitter posts</p>
     </div>
-  </header>
-
-  <section class="hero">
-    <div class="container">
-      <h2>AI-Powered Marketing Automation</h2>
-      <p>Generate social media content, email campaigns, and product descriptions automatically</p>
-      <button class="cta-button" onclick="alert('Coming Soon! Sign up at support@postgenius-ai.com')">Get Started Free</button>
+    
+    <div class="card">
+      <h2>Email Campaigns</h2>
+      <p>Create and schedule email marketing campaigns in seconds</p>
     </div>
-  </section>
-
-  <section id="features" class="features">
-    <div class="container" style="grid-column: 1/-1; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-      <div class="feature">
-        <h3>📱 Social Media Content</h3>
-        <p>AI generates Instagram, TikTok, Facebook, and Twitter posts automatically</p>
-      </div>
-      <div class="feature">
-        <h3>📧 Email Campaigns</h3>
-        <p>Create and schedule email marketing campaigns in seconds</p>
-      </div>
-      <div class="feature">
-        <h3>📝 Product Descriptions</h3>
-        <p>Generate compelling product descriptions for your e-commerce store</p>
-      </div>
-      <div class="feature">
-        <h3>⏰ Scheduling</h3>
-        <p>Schedule content to post at optimal times automatically</p>
-      </div>
-      <div class="feature">
-        <h3>📊 Analytics</h3>
-        <p>Track performance and engagement metrics in real-time</p>
-      </div>
-      <div class="feature">
-        <h3>🔗 Zapier Integration</h3>
-        <p>Connect to 1000+ apps and automate your entire workflow</p>
-      </div>
+    
+    <div class="card">
+      <h2>Pricing</h2>
+      <p>Starter: $299/mo | Professional: $699/mo | Enterprise: $1,499/mo</p>
+      <button onclick="alert('Coming Soon!')">Get Started</button>
     </div>
-  </section>
-
-  <section id="pricing" class="pricing">
-    <div class="container">
-      <h2>Simple, Transparent Pricing</h2>
-      <div class="pricing-cards">
-        <div class="price-card">
-          <h3>Starter</h3>
-          <div class="amount">$299<span style="font-size: 16px; color: #808080;">/mo</span></div>
-          <ul>
-            <li>✓ 100 posts/month</li>
-            <li>✓ 10 email campaigns</li>
-            <li>✓ Basic analytics</li>
-            <li>✓ Email support</li>
-          </ul>
-          <button class="cta-button" style="width: 100%;">Choose Plan</button>
-        </div>
-        <div class="price-card">
-          <h3>Professional</h3>
-          <div class="amount">$699<span style="font-size: 16px; color: #808080;">/mo</span></div>
-          <ul>
-            <li>✓ 500 posts/month</li>
-            <li>✓ 50 email campaigns</li>
-            <li>✓ Advanced analytics</li>
-            <li>✓ Priority support</li>
-            <li>✓ Zapier integration</li>
-          </ul>
-          <button class="cta-button" style="width: 100%;">Choose Plan</button>
-        </div>
-        <div class="price-card">
-          <h3>Enterprise</h3>
-          <div class="amount">$1,499<span style="font-size: 16px; color: #808080;">/mo</span></div>
-          <ul>
-            <li>✓ Unlimited posts</li>
-            <li>✓ Unlimited campaigns</li>
-            <li>✓ Custom analytics</li>
-            <li>✓ 24/7 support</li>
-            <li>✓ API access</li>
-            <li>✓ Dedicated account manager</li>
-          </ul>
-          <button class="cta-button" style="width: 100%;">Choose Plan</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2026 PostGenius. All rights reserved. | Email: support@postgenius-ai.com</p>
-  </footer>
+    
+    <p style="margin-top: 40px; color: #888;">Contact: support@postgenius-ai.com</p>
+  </div>
 </body>
 </html>
