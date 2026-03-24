@@ -2,9 +2,6 @@
   "name": "postgenius",
   "version": "1.0.0",
   "scripts": {
-    "start": "http-server -p $PORT --cors"
-  },
-  "dependencies": {
-    "http-server": "^14.1.1"
+    "start": "node server.js"
   }
 }
