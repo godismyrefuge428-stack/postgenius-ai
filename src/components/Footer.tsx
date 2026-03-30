@@ -1,4 +1,5 @@
 import { Mail, Linkedin, Twitter } from 'lucide-react'
+// Force rebuild
 
 export default function Footer() {
   return (
