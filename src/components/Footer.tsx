@@ -5,6 +5,9 @@ export default function Footer() {
   return (
     <footer className="bg-card-bg border-t border-border-color mt-20">
       <div className="container py-12">
+        <div className="bg-red-600 text-white p-4 mb-8 text-center font-bold text-2xl">
+          🔴 TEST BANNER - LEGAL PAGES SECTION BELOW 🔴
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div>
