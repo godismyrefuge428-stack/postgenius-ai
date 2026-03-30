@@ -1,5 +1,5 @@
 import { Mail, Linkedin, Twitter } from 'lucide-react'
-// Force rebuild
+// Force rebuild v2 - Legal links added
 
 export default function Footer() {
   return (
