@@ -8,6 +8,12 @@ import AdminPanel from './pages/AdminPanel'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import NotFound from './pages/NotFound'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsAndConditions from './pages/TermsAndConditions'
+import Disclaimer from './pages/Disclaimer'
+import RefundPolicy from './pages/RefundPolicy'
+import CookiePolicy from './pages/CookiePolicy'
+import Copyright from './pages/Copyright'
 
 function App() {
   const { isAuthenticated, user } = useAuthStore()
@@ -22,6 +28,14 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login />} />
             <Route path="/signup" element={isAuthenticated ? <Navigate to="/dashboard" /> : <Signup />} />
+
+            {/* Legal Pages */}
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsAndConditions />} />
+            <Route path="/disclaimer" element={<Disclaimer />} />
+            <Route path="/refund" element={<RefundPolicy />} />
+            <Route path="/cookies" element={<CookiePolicy />} />
+            <Route path="/copyright" element={<Copyright />} />
 
             {/* Protected Routes - Customer Dashboard */}
             <Route 

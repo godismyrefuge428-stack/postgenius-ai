@@ -50,9 +50,13 @@ export default function Footer() {
 
         <div className="border-t border-border-color pt-8 flex flex-col md:flex-row items-center justify-between">
           <p className="text-sm text-text-secondary">© 2026 PostGenius. All rights reserved.</p>
-          <div className="flex gap-6 text-sm text-text-secondary mt-4 md:mt-0">
-            <a href="#" className="hover:text-text-primary">Privacy Policy</a>
-            <a href="#" className="hover:text-text-primary">Terms of Service</a>
+          <div className="flex gap-6 text-sm text-text-secondary mt-4 md:mt-0 flex-wrap justify-center md:justify-end">
+            <a href="/privacy" className="hover:text-text-primary">Privacy Policy</a>
+            <a href="/terms" className="hover:text-text-primary">Terms of Service</a>
+            <a href="/disclaimer" className="hover:text-text-primary">Disclaimer</a>
+            <a href="/refund" className="hover:text-text-primary">Refund Policy</a>
+            <a href="/cookies" className="hover:text-text-primary">Cookie Policy</a>
+            <a href="/copyright" className="hover:text-text-primary">Copyright</a>
           </div>
         </div>
       </div>
