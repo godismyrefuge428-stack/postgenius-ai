@@ -1,6 +1,6 @@
 [build]
-  publish = "."
-  command = "echo 'No build needed'"
+  publish = "dist"
+  command = "pnpm build"
   functions = "netlify/functions"
 
 [functions]
